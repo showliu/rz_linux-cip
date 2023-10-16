@@ -576,7 +576,7 @@ static int ov5647_probe(struct i2c_client *client)
 	}
 
 	xclk_freq = clk_get_rate(sensor->xclk);
-	if (xclk_freq != 25000000) {
+	if ((xclk_freq < 6000000) || (xclk_freq > 27000000)) {
 		dev_err(dev, "Unsupported clock frequency: %u\n", xclk_freq);
 		return -EINVAL;
 	}
