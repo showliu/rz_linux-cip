@@ -471,6 +471,23 @@
 		reset-gpios = <&pinctrl RZG2L_GPIO(40, 2) GPIO_ACTIVE_HIGH>;
 	};
 
+	ov5647: camera@36 {
+		compatible = "ovti,ov5647";
+		reg = <0x36>;
+		status = "disabled";
+
+		clock-names = "xclk";
+		clocks = <&clk_ext_camera>;
+		clock-frequency = <24000000>;
+		DOVDD-supply = <&cam_vdddo_1v8>;
+		DVDD-supply = <&cam_vddd_1v5>;
+		AVDD-supply = <&cam_vdda_2v8>;
+
+		pwdn-gpios = <&pinctrl RZG2L_GPIO(2, 0) GPIO_ACTIVE_LOW>;
+		reset-gpios = <&pinctrl RZG2L_GPIO(40, 2) GPIO_ACTIVE_HIGH>;
+	};
+
+
 	imx219: camera@10 {
 		compatible = "sony,imx219";
 		reg = <0x10>;
